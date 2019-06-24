@@ -18,4 +18,4 @@ async def on_connect():
 async def on_disconnect():
     print("Bot has lost connection to Discord servers!")
 
-client.run("NTkyNTIwODE3NTc3ODIwMTcw.XRAilA.qCcBBuhJlpDgMWAtYwZe_a2T5bg")
+client.run("TOKEN")
