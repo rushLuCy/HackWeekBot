@@ -1,4 +1,5 @@
 import discord
+import functions.py
 from discord.ext import commands
 
 client = commands.Bot(command_prefix = ".")
