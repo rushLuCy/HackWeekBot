@@ -1,5 +1,5 @@
 import discord
-from functions.py import discordify, 
+from functions.py import discordify, original
 from discord.ext import commands
 
 client = commands.Bot(command_prefix = ".")
@@ -31,17 +31,15 @@ async def on_message(message):
         if msg.startswith('+fanart'):
             # Fan art options: original or discordify existing image
             if msgList[1] == 'og':
-                pass
+                original('fanart')
             elif msgList[1] == 'discordify':
                 img = message.attachments
                 img[0].save('image.jpeg')
                 discordify('image.jpeg')
         elif msg.startswith('+emoji'):
-            pass
+            original('emoji')
         elif msg.startswith('+merch'):
-            pass
-        elif msg.startswith('+story'):
-            pass
+            original('merch')
         
 
 client.run("TOKEN")
