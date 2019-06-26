@@ -1,5 +1,5 @@
 import discord
-import functions.py
+from functions.py import discordify, 
 from discord.ext import commands
 
 client = commands.Bot(command_prefix = ".")
@@ -20,11 +20,22 @@ async def on_disconnect():
     print("Bot has lost connection to Discord servers!")
 
 @client.event
-async def on_message(msg):
-    msgList = list(msg)
-    if msgList[0] == '+':
+async def on_message(message):
+    msg = message.content
+    # Splits message by spaces and characters
+    msgChars = list(msg)
+    msgList = msg.split()
+    
+    # Bot flag recognition and subsequent message comprehension if/else tree
+    if msgChars[0] == '+':
         if msg.startswith('+fanart'):
-            pass
+            # Fan art options: original or discordify existing image
+            if msgList[1] == 'og':
+                pass
+            elif msgList[1] == 'discordify':
+                img = message.attachments
+                img[0].save('image.jpeg')
+                discordify('image.jpeg')
         elif msg.startswith('+emoji'):
             pass
         elif msg.startswith('+merch'):
