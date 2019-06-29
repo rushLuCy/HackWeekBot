@@ -124,18 +124,14 @@ def train(write_dir):
         x_train = y_train
     x_shape = x_train.shape
 
-    ###################################
     #  Create Model
-    ###################################
 
     os.environ['THEANORC'] = "./gpu.theanorc"
     os.environ['KERAS_BACKEND'] = "theano"
 
     backend.set_image_data_format('channels_first')
 
-    ###################################
     #  Create Model
-    ###################################
     if CONTINUE_TRAIN:
         discriminator = load_model(WRITE_DIR + 'discriminator.h5')
         generator = load_model(WRITE_DIR + 'generator.h5')
@@ -279,9 +275,7 @@ def train(write_dir):
     plot_model(discriminator, to_file=WRITE_DIR + 'discriminator.png', show_shapes=True)
     plot_model(encoder, to_file=WRITE_DIR + 'encoder.png', show_shapes=True)
 
-    ###################################
     #  Encoder Decoder
-    ###################################
     def save_image(fname, x):
         img = (x * 255.0).astype(np.uint8)
         img = np.transpose(img, (1, 2, 0))
@@ -347,9 +341,7 @@ def train(write_dir):
         generator.save(WRITE_DIR + 'generator.h5')
         encoder.save(WRITE_DIR + 'encoder.h5')
 
-    ###################################
     #  Train
-    ###################################
     generator_loss = []
     discriminator_loss = []
     encoder_loss = []
